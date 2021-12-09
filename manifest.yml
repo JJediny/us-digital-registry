@@ -1,0 +1,29 @@
+---
+applications:
+- name: us-digital-registry
+  memory: 512M
+  instances: 1
+  command: bundle exec rake cf:on_first_instance db:migrate && bundle exec rails s -b 0.0.0.0 -p $PORT -e $RAILS_ENV
+  env:
+    AWS_SES_ACCESS_KEY_ID:
+    AWS_SES_SECRET_ACCESS_KEY:
+    AWS_SES_REGION:
+    LOGIN_GOV_CLIENT_ID: 
+    LOGIN_GOV_IDP_BASE_URL: https://secure.login.gov/
+    LOGIN_GOV_PRIVATE_KEY:
+    LOGIN_GOV_REDIRECT_URI: https://touchpoints.app.cloud.gov/users/auth/login_dot_gov/callback
+    REGISTRY_IDP_CLIENT_ID: 
+    NEW_RELIC_KEY:
+    RAILS_ENV: production
+    S3_AWS_ACCESS_KEY_ID:
+    S3_AWS_BUCKET_NAME:
+    S3_AWS_REGION:
+    S3_AWS_SECRET_ACCESS_KEY:
+  buildpacks:
+    - nodejs_buildpack
+    - ruby_buildpack
+  services:
+    - us-digital-registry-prod-db
+    - us-digital-registry-prod-s3
+  routes:
+    - route: us-digital-registry.app.cloud.gov

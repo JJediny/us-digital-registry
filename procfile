@@ -1,0 +1,4 @@
+#db-env: cp ./config/database.example.yml ./config/database.yml
+rake-db: rake db:create db:migrate db:seed cf:on_first_instance
+rake-services: rake services:load
+web: bundle exec rails server -e $RAILS_ENV -p $PORT

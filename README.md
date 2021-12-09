@@ -10,11 +10,23 @@ As built, it allows anyone with a .gov or .mil email address to register a socia
 
 ## Development
 
-Ringsail is currently being developed. More information will be added here as the code matures.
+Running locally, install Docker and Docker compose
+
+```
+# update docker-compose.yml file ENV as needed
+docker-compose build
+docker-compose up
+```
+
+Deploying to Cloud.gov
+
+```
+PLACEHOLDER
+```
 
 ## Requirements
 
-Ringsail is built on Ruby 1.9.2 and Rails 3.1, backed by a MySQL 5 database.
+Ringsail is built on Ruby 2.4.6 and Rails 5.2.0, backed by a MySQL 5 database.
 
 ## Social Media Plugins
 
